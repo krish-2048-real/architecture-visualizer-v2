@@ -187,7 +187,7 @@ export default function Home() {
         setLoading(true);
         setError(null);
 
-        const response = await fetch("http://localhost:5000/api/files");
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/files`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -396,7 +396,7 @@ export default function Home() {
         {/* Footer */}
         <footer className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
           <p>
-            Backend: <code className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">http://localhost:5000</code>
+            Backend: <code className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">{process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}</code>
           </p>
         </footer>
       </div>
